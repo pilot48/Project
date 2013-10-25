@@ -7,7 +7,7 @@ require 'carts.php' ;
 		}
 		else
 		{
-			$msg = "Welcome Username ".$_SESSION['email'];
+			$msg = $_SESSION['email'];
 		}
 		if(isset($_GET['logout'])== 1)
 		{
@@ -15,6 +15,18 @@ require 'carts.php' ;
 			header("Location: index.php");
 			die();
 			}
+			
+			$num=$_POST['num'];
+			
+				if(preg_match("/^[0-9]{16}$/",$num))
+				{ 
+					$error="Thank you mrs/mr email :".$msg. " your oder has been processed ";
+					
+				}else
+				{
+					$error = "wrong account number";
+					}
+				
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -94,13 +106,12 @@ body,td,th {
         <p align="right"><a href="cart.php?logout=1">Logout</a></div></td>&nbsp;
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-        <center><p><a href="checkout.php"><img src="Images/go-to-checkout.gif" width="119" height="31" /></a>
-          <?php Add_cart();
-	
-				?>
-                
+        <center>
+          
+                <?php echo $error;?>
+                <?php   ?><br/><br/><br/><br/>
                 &nbsp;
-</center>
+  </center>
         <p></p>
 </div> 
     <!-- end of content -->

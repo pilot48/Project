@@ -21,7 +21,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>SPN Book Shop member page</title>
+<title>SPN Book Shop product page</title>
 <meta name="keywords" content="Book Store Template, Free CSS Template, CSS Website Layout, CSS, HTML" />
 <meta name="description" content="Book Store Template, Free CSS Template, Download CSS Website" />
 <link href="templatemo_style.css" rel="stylesheet" type="text/css" />
@@ -34,8 +34,8 @@
     	<ul>
             <li><a href="member.php">Profile</a></li>
             <li><a href="edit.php">Change Profile</a></li>            
-            <li><a href="newBooks.php">New Releases  </a></li>
-            <li><a href="product.php">Product  </a></li>
+            
+        <li><a href="product.php">Product  </a></li>
             <li><a href="cart.php">view Cart </a></li>
     	</ul>
     </div> <!-- end of menu -->
@@ -67,10 +67,9 @@
     <h1><a href="member.php?logout=1">Logout</a></h1>
             <ul>
               <li><form id="form1" name="form1" method="post" action="">
-                <p>
-                  <?php  echo $msg ; ?>
-                </p>
                 <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                
                 <?php 
 				
 				products();
@@ -78,18 +77,12 @@
 				
 				
 				?>
-                <table width="541" border="15">
+                <br/><br/>
+                
+                <table width="110" border="15" align="center">
   <tr>
-    <td width="6">&nbsp;</td>
-    <td width="6">&nbsp;</td>
-    <td width="11"><img src="Images/purchase.gif" width="135" height="50" /></td>
-    <td width="8">&nbsp;</td>
-    <td width="135">&nbsp;</td>
-    <td width="6"><img src="Images/view-cart.gif" width="135" height="50" /></td>
-    <td width="6">&nbsp;</td>
-    <td width="135">&nbsp;</td>
-    <td width="177"><img src="Images/continue.gif" width="135" height="50" /></td>
-  </tr>
+    <td><a href="cart.php"><img src="Images/view-cart.gif" width="67" height="45" align="absmiddle" /></a></td>
+    </tr>
 </table>
 
                 &nbsp;</p>
@@ -106,10 +99,8 @@
 <a href="subpage.html"><img src="images/templatemo_ads.jpg" alt="ads" width="894" height="102" /></a></div> 
     <!-- end of content -->
     
-    <div id="templatemo_footer">
-    
-	       <a href="index.php">Home</a> | <a href="about.php">About</a> | <a href="register.php">Register</a> | <a href="newBooks.php">New Releases</a> | | <a href="contact.php">Contact Us</a><br />
-        Copyright © 2013 <a href="#"><strong>SPN Company</strong></a> 	</div> 
+    <div id="templatemo_footer"><a href="member.php">Home</a> |<a href="edit.php">change profile</a>|<a href="product.php">product</a>|<a href="cart.php">view cart</a><br />
+<strong>SPN Company</strong></div> 
     <!-- end of footer -->
 <!--  Free CSS Template www.templatemo.com -->
 </div> <!-- end of container -->

@@ -34,7 +34,10 @@
                 <li>Dreamweaver CS6</li>
                 <li>Flash cs6</li>
                 <li>html5 and css3 </li>
-                <li>PHP and MySQL</li></ul></div>
+                <li>PHP and MySQL</li>
+      </ul>
+   	  <p><span class="detail_button"><a href="newBooks.php">more</a></span></p>
+    </div>
     </div>
     <!-- end of header -->
     
@@ -46,6 +49,11 @@
             <ul>
                     <li>
                       <p>The SPN Book Store: books provides an introduction to web and multimedia   skills needed to help meet the growing demand for entry-level information and communication technology (ICT) professionals. The book store covers affordable books that one can not buy in the book stores using cash and enables you to hav your book everywhere you go so that you should improve your programming skills.</p>
+                    </li>
+                    <li></li>
+                    <li>This book store specializes in web and multimedia books only no other books.The objective is to enhance </li>
+                    <li>the programing skills in web and</li>
+                    <li> multimedia.
                       <p>&nbsp;</p>
                     </li>
        	    </ul>
@@ -74,18 +82,18 @@
         
     <div id="templatemo_content_left">
         	<div class="templatemo_content_left_section">
-           	  <h1>Adobe flash book</h1>
+           	  <h1>PHP BOOK</h1>
                 <ul>
                     <li>
                       <form id="form1" name="form1" method="post" action="">
-                        <img src="images/download (14).jpg" width="166" height="182" alt="FLSH" />
+                        <img src="Images/download (7).jpg" width="199" height="201" alt="f" />
                       </form>
                   </li>
            	  </ul>
       </div>
    	  <div class="templatemo_content_left_section">
        	<div class="templatemo_product_box">
-       	  <h1>information</h1>
+       	  <h1>INFORMATION</h1>
        	  <ul>
         	    <li>
         	      <form id="form4" name="form1" method="post" action="">
@@ -108,8 +116,8 @@
     
     <div id="templatemo_footer">
     
-	       <a href="index.php">Home</a> | <a href="about.php">About</a> | <a href="register.php">Register</a> | <a href="newBooks.php">New Releases</a> |  <a href="contact.php">Contact Us</a> |  <a href="adminlogin.php">Admin</a><br />
-        Copyright © 2013 <a href="#"><strong>SPN Company</strong></a> 	</div> 
+         <a href="index.php">Home</a> | <a href="about.php">About</a> | <a href="register.php">Register</a> | <a href="newBooks.php">New Releases</a> |  <a href="contact.php">Contact Us</a> |  <a href="admin_login.php">Admin</a><br />
+        Copyright © 2013 <strong>SPN Company</strong> </div> 
     <!-- end of footer -->
 <!--  Free CSS Template www.templatemo.com -->
 </div> <!-- end of container -->

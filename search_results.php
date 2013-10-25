@@ -1,29 +1,14 @@
 <?php
-require("scripts/db_Commands.class.php");
-#User searches the product in the database
-session_start();
-$object=new db_Commands();
-$dispaly="";
-$id=0;
+	session_start();
+	$term=trim($_POST['term']);
+$type=$_POST['type'];
+ 
+ $msg = "";
+if (!$term || !$type) {
 
-	if(isset($_GET['id']))
-	{
-		$id=$_GET['id'];
-		$display=$object->view_specific_product($id);		
-	}
-	
-	
-		if(isset($_POST['prodid']))
-		{
-			$pid=$_POST['prodid'];
-			$_SESSION['cart_'.$pid]+=1;
-			header("Location: cart.php");
-		
-		}
-
-	
-
-
+	header("Location: index.php");
+	die();
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -78,80 +63,89 @@ function MM_findobjectect(n, d) { //v4.01
                 <li>Dreamweaver CS6</li>
                 <li>Flash cs6</li>
                 <li>html5 and css3 </li>
-                <li>PHP and MySQL</li></ul></div>
+                <li>PHP and MySQL</li>
+      </ul>
+   	  <p><span class="detail_button"><a href="newBooks.php">more</a></span></p>
+    </div>
   </div>
     <!-- end of header -->
     
-  <div id="templatemo_content">
-    	
-        <div id="templatemo_content_left">
-          <div class="templatemo_content_left_section">                
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p><img src="images/valid-xhtml10.png" width="88" height="31" /><img src="images/vcss-blue.gif" width="88" height="31" /></p>
-<p>&nbsp;</p>
-          </div>
-    </div> <!-- end of content left -->
+  <div id="templatemo_content"><!-- end of content left -->
         
         
     <div id="templatemo_content_left">
       <div class="templatemo_content_left_section">
-            <h1>View the image</h1>
+            <h1>Search Results</h1>
             <ul>
-              <li><form id="form1" name="form1" method="post" action="">
+              <li>
               
-                <p><img src="Images/<?php echo $id;?>.jpg" width="238" height="191" />                  </p>
-                <p><a href="Images/<?php echo $id;?>.jpg">View Full Size Image</a></p>
-              </form></li>
+                <p>&nbsp;</p>
+                <p></p>
+              </li>
             </ul>
       </div>
     </div>
         <!--- copy -->
-        
-    <div id="templatemo_content_left">
-   	  <div class="templatemo_content_left_section">
-           	  <h1>PHP and MySQL<span></span></h1>
-                <ul>
-                    <li>
-                      <form id="form1" name="form1" method="post" action="">
-                        <p>&nbsp;                        </p>
-                        <p>&nbsp;</p>
-                        <p><a href="product_list.php">back</a></p>
-                        <p>&nbsp;</p>
-                        <?php echo $display;?>
-                        <p>&nbsp;</p>
-                        <p><input type="hidden" name="prodid" value="<?php echo $id;?>"/>
-                        <p>
-                          <input type="submit" value="Add to Cart" />
-                        </p>
-                        <p>&nbsp;</p>
-                        <p>&nbsp;</p>
-                        <p>&nbsp;</p>
-                        <p>&nbsp;</p>
-                      </form>
-                  </li>
-           	  </ul>
-      </div>
-    </div>
-        
+
         <p>
           <!-- End of copy --><!-- end of content right -->
           
-        </p>
+          <?php
+
+$term=trim($_POST['term']);
+$type=$_POST['type'];
+ 
+ $msg = "";
+if (!$term || !$type) {
+
+	
+}
+
+ @ $db = new mysqli('localhost', 'root','','e_book_db');
+
+  if (mysqli_connect_errno()) {
+     echo "Error: Could not connect to database.  Please try again later.";
+   
+  }
+  $query = "select * from products where ".$type." like '%".$term."%'";		
+	$result = $db->query($query);
+	$num_results = $result->num_rows;
+	
+	//echo "<p>Number of items found: ".$num_results."</p>";
+	
+	echo "<table  border='15'>";
+		echo "<tr>";
+	echo "<th scope='row' bgcolor='#996600'>". "Name: ";
+	echo "<th scope='row' bgcolor='#996600'>"."<br />Price: ";
+	echo "<th scope='row' bgcolor='#996600'>"." <br />Detail: ";
+	echo "<th scope='row' bgcolor='#996600'>"."<br />Cartegory: ";
+	echo "<th scope='row' bgcolor='#996600'>"." <br />ISBN: ";
+	echo "<th scope='row' bgcolor='#996600'>"." <br />Aurhor: ";
+		echo "</tr>";
+	for ($i=0; $i <$num_results; $i++) {
+	$row = $result->fetch_assoc();
+	echo "<tr>";
+	echo "<td>".htmlspecialchars(stripslashes($row['product_name']));
+	echo "<td>". stripslashes(stripslashes($row['price']));
+	echo "<td>". stripslashes(stripslashes($row['detail_text'])) ;
+	echo "<td>". stripslashes(stripslashes($row['cartegory']));
+	echo "<td>". stripslashes(stripslashes($row['ISBN']));
+	echo "<td>". stripslashes(stripslashes($row['author']));
+	}echo "</tr>";
+	echo "</table>";
+	
+	if(!$result)
+	{
+		$msg = "item is not on our database";
+		}
+		else
+		{
+			$msg="";
+			}
+
+$db->close();
+?>
+    </p>
         <a href="subpage.html"><img src="images/templatemo_ads.jpg" alt="ads" width="894" height="102" /></a></div> 
     <!-- end of content -->
     

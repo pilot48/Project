@@ -1,20 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 3.2.0.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 17, 2013 at 09:24 PM
--- Server version: 5.5.27
--- PHP Version: 5.4.7
+-- Host: localhost
+-- Generation Time: Oct 23, 2013 at 07:55 PM
+-- Server version: 5.1.37
+-- PHP Version: 5.3.0
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `e_book_db`
@@ -28,11 +21,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` int(11) NOT NULL,
-  `password` int(11) NOT NULL,
-  `privilages` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`) VALUES
+(1, 'sbumaluleke@gmail.com', 'M@luks.sbu1'),
+(2, 'pilotnkuna@gmail.com', 'pil@t.123');
 
 -- --------------------------------------------------------
 
@@ -46,6 +46,11 @@ CREATE TABLE IF NOT EXISTS `items` (
   `item_name` varchar(50) NOT NULL,
   PRIMARY KEY (`item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `items`
+--
+
 
 -- --------------------------------------------------------
 
@@ -62,6 +67,11 @@ CREATE TABLE IF NOT EXISTS `orders` (
   PRIMARY KEY (`order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `orders`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -76,26 +86,17 @@ CREATE TABLE IF NOT EXISTS `products` (
   `cartegory` varchar(255) NOT NULL,
   `author` varchar(100) NOT NULL,
   `ISBN` varchar(20) NOT NULL,
+  `quantity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='this is a product table' AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='this is a product table' AUTO_INCREMENT=3 ;
 
 --
--- Table structure for table `userinfor`
+-- Dumping data for table `products`
 --
 
-CREATE TABLE IF NOT EXISTS `userinfor` (
-  `id` int(13) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `surname` varchar(50) NOT NULL,
-  `id_num` int(13) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `cell` int(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(32) NOT NULL,
-  `address` varchar(225) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `products` (`id`, `product_name`, `price`, `detail_text`, `cartegory`, `author`, `ISBN`, `quantity`) VALUES
+(1, 'PHP', '450.00', 'A php web developer book', 'WEB', 'Luke Welling', '6987458745', 88),
+(2, 'Flash CS5', '500.00', 'flash cs5 action script', 'Multimedia', 'Laura Thomson', '0589632547', 41);
 
 -- --------------------------------------------------------
 
@@ -112,15 +113,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(16) NOT NULL,
   `id_number` varchar(13) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='is a table that store all users information' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='is a table that store all users information' AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `name`, `surname`, `cell`, `email`, `password`, `id_number`) VALUES
-(1, 'Pilot', 'Nkuna', '0797588808', 'pilotnkuna@gmail.com', 'pilot123', '9108076092081');
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+(10, 'pilot', 'Maluleke', '0797588808', 'pie@gmail.com', '123', '9108076092081'),
+(11, 'sibusiso', 'nkuna', '0712458967', 'sbu@gmail.com', '123', '9202064587032');

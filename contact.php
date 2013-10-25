@@ -15,10 +15,10 @@
                 <li><a href="index.php" class="current">Home</a></li>
             <li><a href="about.php">About</a></li>
             <li><a href="register.php">Register</a></li>            
-            <li><a href="newBooks.php">New Releases</a></li>   
+            <li><a href="more.php">New Release</a><a href="newBooks.php"></a></li>   
             <li><a href="contact.php">Contact</a></li>
     	</ul>
-    </div> <!-- end of menu -->
+  </div> <!-- end of menu -->
     
     <div id="templatemo_header">
     	<div id="templatemo_special_offers">
@@ -35,7 +35,8 @@
                 <li>Flash cs6</li>
                 <li>html5 and css3        </li>
                 <li>PHP and MySQL</li>
-        	</ul>
+            </ul>
+        	<p><span class="detail_button"><a href="newBooks.php">more</a></span></p>
         </div>
     </div> <!-- end of header -->
     
@@ -70,6 +71,12 @@
             <th colspan="2" scope="row"><form id="form2" name="form2" method="post" action="">
               <p>&nbsp;</p>
               <p><form id="form2" method="post" action="contact.php">
+				  <p>&nbsp;</p>
+				  <p>&nbsp;</p>
+				  <p>&nbsp;</p>
+				  <p>&nbsp;</p>
+				  <p>&nbsp;</p>
+				  <p>&nbsp;</p>
 				  <table width="435" border="0">
 				    <tr>
 				      <th colspan="2" align="left" scope="row"></th>
@@ -110,15 +117,9 @@
         <p>&nbsp;</p>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
         <p>
-          </p>
           </form>
+        </p>
         </p></th>
           </tr>
           <tr>

@@ -7,7 +7,7 @@ require 'carts.php' ;
 		}
 		else
 		{
-			$msg = "Welcome Username ".$_SESSION['email'];
+			$msg = $_SESSION['email'];
 		}
 		if(isset($_GET['logout'])== 1)
 		{
@@ -15,6 +15,7 @@ require 'carts.php' ;
 			header("Location: index.php");
 			die();
 			}
+			
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -94,13 +95,38 @@ body,td,th {
         <p align="right"><a href="cart.php?logout=1">Logout</a></div></td>&nbsp;
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-        <center><p><a href="checkout.php"><img src="Images/go-to-checkout.gif" width="119" height="31" /></a>
-          <?php Add_cart();
-	
-				?>
+        <center>
+          
                 
+                <form id="form1" name="form1" method="post" action="done.php">
+                  <table width="320" border="15">
+                    <tr>
+                      <td width="65">Email</td>
+                      <td width="168"><label for="email"></label>
+                      <input type="text" name="email" id="email" value="<?php echo $msg;?>" readonly="readonly"/></td>
+                    </tr>
+                    <tr>
+                      <td>Account Type</td>
+                      <td><label for="type"></label>
+                        <select name="type" id="type">
+                        <option>--select--</option>
+                        <option>cheque</option>
+                        <option>debit</option>
+                      </select></td>
+                    </tr>
+                    <tr>
+                      <td>Account number</td>
+                      <td><label for="num"></label>
+                      <input type="text" name="num" id="num" required/></td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td><input type="submit" name="sub" id="sub" value="Submit" /></td>
+                    </tr>
+                  </table>
+                </form>
                 &nbsp;
-</center>
+  </center>
         <p></p>
 </div> 
     <!-- end of content -->

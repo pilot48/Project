@@ -11,13 +11,10 @@ session_start();
 		// calling the database connection
 		  require("scripts/DB_Connection.class.php");
 		  $obj = new DB_Connection();
-		   $obj->connect();
+		  $obj->connectLogin();
 		
 		//Selecting the username from the database which is an email
-		//$query = mysql_query("SELECT * FROM users WHERE email='$email'");
-		$sql = "SELECT * FROM users WHERE(email = '".$email."')"; 
-		
-		$query = mysql_query($sql);
+		$query = mysql_query("SELECT * FROM super_admin WHERE email='$email'");
 		
 		$rows = mysql_num_rows($query);
 		
@@ -31,10 +28,9 @@ session_start();
 					
 					 if($email==$dbemail && $password==$dbpassword)
 					 {
-						// "You're successfully loged in ! <a href='memberpage.php' >Click here to continue <a/>";
 						$_SESSION['admin']=1;
 						$_SESSION['email']=$email;
-						header("Location: member.php");
+						header("Location: admin.php");
 					 }
 					 else
 						{
@@ -43,7 +39,7 @@ session_start();
 			}
 			else
 			{
-				$display="User does not exist!";	
+				$display=" Admin does not exist!";	
 			}
 		
 		}
@@ -162,7 +158,7 @@ function MM_swapImage() { //v3.0
         
     <div id="templatemo_content_left">
       <div class="templatemo_content_left_section">
-            <h1>Login First in order to buy</h1>
+            <h1>Admin Login</h1>
             <ul>
               <li><form id="form1" name="form1" method="post" action="">
                         <table width="239" height="128" border="0">
@@ -239,10 +235,7 @@ function MM_swapImage() { //v3.0
         <a href="subpage.html"><img src="images/templatemo_ads.jpg" alt="ads" width="894" height="102" /></a></div> 
     <!-- end of content -->
     
-    <div id="templatemo_footer">
-    
-	       <a href="index.php">Home</a> | <a href="about.php">About</a> | <a href="register.php">Register</a> | <a href="newBooks.php">New Releases</a> | | <a href="contact.php">Contact Us</a><br />
-        Copyright © 2013 <strong>SPN Company</strong> </div> 
+    <div id="templatemo_footer">Copyright © 2013 <strong>SPN Company</strong></div> 
     <!-- end of footer -->
 
 </div> <!-- end of container -->

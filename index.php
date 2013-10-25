@@ -52,8 +52,7 @@ session_start();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>SPN Book Shop Home</title>
-<meta name="keywords" content="Book Store Template, Free CSS Template, CSS Website Layout, CSS, HTML" />
-<meta name="description" content="Book Store Template, Free CSS Template, Download CSS Website" />
+
 <link href="templatemo_style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -83,7 +82,10 @@ session_start();
                 <li>Dreamweaver CS6</li>
                 <li>Flash cs6</li>
                 <li>html5 and css3 </li>
-                <li>PHP and MySQL</li></ul></div>
+                <li>PHP and MySQL</li>
+      </ul>
+   	  <p><span class="detail_button"><a href="newBooks.php">more</a></span></p>
+    </div>
     </div>
     <!-- end of header -->
     
@@ -130,7 +132,7 @@ session_start();
 			<div class="templatemo_content_left_section">
            	  <h1>Search</h1>
                 <ul>
-                    <li><form id="form2" name="form2" method="post" action="">
+                    <li><form id="form2" name="form2" method="post" action="search_results.php">
                         <table width="200" border="0">
                           <tr>
                             <td width="86"><p>
@@ -139,13 +141,17 @@ session_start();
                               <p>
                                 <label for="type"></label>
                                 <select name="type" id="type">
-                                <option>Name</option>
-                                <option>Discription</option>
+                                <option>--select--</option>
+                                <option>product_name</option>
+                                <option>price</option>
+                                <option>detail_text</option>
+                                <option>cartegory</option>
                                 <option>ISBN</option>
+                                <option>author</option>
                                 </select>
                               </p></td>
                             <td width="98"><label for="term">Search Term</label>
-                            <input name="term" type="text" id="term" size="17" /></td>
+                            <input name="term" type="text" id="term" size="17" required/></td>
                           </tr>
                           <tr>
                             <td>&nbsp;</td>
@@ -154,6 +160,10 @@ session_start();
                         </table>
                       </form></li>
             	</ul>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
               <p>&nbsp;</p>
               <p>&nbsp;</p>
               <p>&nbsp;</p>
@@ -184,7 +194,7 @@ session_start();
                         <label for="password3"></label></td>
                     </tr>
                     <tr>
-                      <td><span class="buy_now_button"><a href="login.php">Buy Now<span class="detail_button"></span></a><span class="detail_button"><a href="subpage.html">Details</a></span></span></td>
+                      <td><span class="buy_now_button"><a href="login.php">Buy Now<span class="detail_button"></span></a><span class="detail_button"><a href="newBooks.php">more</a></span></span></td>
                     </tr>
                   </table>
                 </form>
@@ -204,12 +214,12 @@ session_start();
                         <p>Name : C# &amp; .NET</p>
                         <p>Author: Linux Rob</p>
                         <p>ISBN : 7802546</p>
-                        <h3>R600<br />
+                        <h3>R786<br />
                         </h3>
                         <label for="password4"></label></td>
                     </tr>
                     <tr>
-                      <td height="79"><span class="buy_now_button"><a href="login.php">Buy Now<span class="detail_button"></span></a><span class="detail_button"><a href="subpage.html">Details</a></span></span></td>
+                      <td height="79"><span class="buy_now_button"><a href="login.php">Buy Now<span class="detail_button"></span></a><span class="detail_button"><a href="newBooks.php">more</a></span></span></td>
                     </tr>
                   </table>
                 </form>
@@ -231,10 +241,10 @@ session_start();
                             <td width="107"><label for="email"></label>                              <p>Name : PHP &amp; MySQL</p>
                               <p>Author: Adam Mear</p>
                               <p>ISBN : 7896325</p>
-<h3>R600</h3>                            <label for="password"></label></td>
+<h3>R559</h3>                            <label for="password"></label></td>
                           </tr>
                           <tr>
-                            <td><span class="buy_now_button"><a href="login.php">Buy Now<span class="detail_button"></span></a><span class="detail_button"><a href="subpage.html">Details</a></span></span></td>
+                            <td><span class="buy_now_button"><a href="login.php">Buy Now<span class="detail_button"></span></a><span class="detail_button"><a href="newBooks.php">more</a></span></span></td>
                           </tr>
                         </table>
                       </form>
@@ -254,11 +264,10 @@ session_start();
         	              <p>Name : PHP5</p>
                           <p>Author: Mark flar</p>
                           <p>ISBN : 5236984</p>
-        	              <h3>R600
-   	                    <label for="password5"></label></h3></td>
+        	              <h3>R824</h3></td>
       	            </tr>
         	          <tr>
-        	            <td><span class="buy_now_button"><a href="login.php">Buy Now<span class="detail_button"></span></a><span class="detail_button"><a href="subpage.html">Details</a></span></span></td>
+        	            <td><span class="buy_now_button"><a href="login.php">Buy Now<span class="detail_button"></span></a><span class="detail_button"><a href="newBooks.php">more</a></span></span></td>
       	            </tr>
       	          </table>
       	        </form>
@@ -278,8 +287,8 @@ session_start();
     
     <div id="templatemo_footer">
     
-	       <a href="index.php">Home</a> | <a href="about.php">About</a> | <a href="register.php">Register</a> | <a href="newBooks.php">New Releases</a> |  <a href="contact.php">Contact Us</a> |  <a href="adminlogin.php">Admin</a><br />
-        Copyright © 2013 <a href="#"><strong>SPN Company</strong></a> 	</div> 
+     <a href="index.php">Home</a> | <a href="about.php">About</a> | <a href="register.php">Register</a> | <a href="newBooks.php">New Releases</a> |  <a href="contact.php">Contact Us</a> |  <a href="admin_login.php">Admin</a> | <a href="super_admin.php">Super Admin</a><br />
+        Copyright © 2013 <strong>SPN Company</strong> </div> 
     <!-- end of footer -->
 <!--  Free CSS Template www.templatemo.com -->
 </div> <!-- end of container -->

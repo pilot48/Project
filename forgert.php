@@ -145,8 +145,8 @@ session_start();
 <meta name="keywords" content="Book Store Template, Free CSS Template, CSS Website Layout, CSS, HTML" />
 <meta name="description" content="Book Store Template, Free CSS Template, Download CSS Website" />
 <link href="templatemo_style.css" rel="stylesheet" type="text/css" />
-<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.css"/>
+<!--<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.css"/>-->
 </head>
 <body>
 <!--  Free CSS Templates from www.templatemo.com -->
@@ -175,7 +175,10 @@ session_start();
                 <li>Dreamweaver CS6</li>
                 <li>Flash cs6</li>
                 <li>html5 and css3 </li>
-                <li>PHP and MySQL</li></ul></div>
+                <li>PHP and MySQL</li>
+            </ul>
+        	<p><span class="detail_button"><a href="newBooks.php">more</a></span></p>
+        </div>
     </div> <!-- end of header -->
     
     <div id="templatemo_content">
@@ -272,7 +275,7 @@ session_start();
     <div id="templatemo_footer">
     
 	     <a href="index.php">Home</a> | <a href="about.php">About</a> | <a href="register.php">Register</a> | <a href="newBooks.php">New Releases</a> | | <a href="contact.php">Contact Us</a><br />
-        Copyright © 2013 <a href="#"><strong>SPN Company</strong></a> 	</div> 
+        Copyright © 2013 <strong>SPN Company</strong> </div> 
     <!-- end of footer -->
 <!--  Free CSS Template www.templatemo.com -->
 </div> <!-- end of container -->

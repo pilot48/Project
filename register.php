@@ -1,4 +1,5 @@
 <?php
+session_start();
 $msg = "";
 $data = "";
 if($_SERVER['REQUEST_METHOD']=="POST")
@@ -10,7 +11,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 	$email = $_POST['email'];
 	$pass  = $_POST['pass'];
 	$rpass = $_POST['rpass'];
-	$image = $_POST['image'];
+	$image = "test";
 
 	if($fName && $lName && $id && $cell && $email && $pass && $rpass && $image)
 	{
@@ -27,55 +28,52 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 							{
 								if(preg_match("/^[a-zA-Z0-9\_\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\_]+$/",$email))
 								{
-									if($pass == $rpass)
-									{
-										
-										/*require("scripts/db_Commands.class.php");
-										$myObject = new db_Commands();
-										$data = $myObject->register($fName,$lName,$id,$cell,$email,$pass);
-										
-										if($data > 0)
+										if(strlen($pass) < 8)
 										{
-											$msg = 	$email." is inserted into database.</br>";
-											$msg =  "<br /><a href = 'login.php'>Login</a>";
-										
-											exit;	
-										}
-										*/
-										
-										@ $db = new mysqli('localhost', 'root','','e_book_db');
-										
-										 if (mysqli_connect_error()) 
-										 {
-											 $msg= "Error: Could not connect to database.Please try again later.</br>";
-											 exit;
-										 }
-										 //$password = md5($pass);
-										 
-										 //uploading a picture 
-										 	
-										 $query = "insert into users values
-										(NULL,'".$fName."', '".$lName."',										'".$cell."','".$email."','".$pass."','".$id."','".$image."')";
-											
-										$result = $db->query($query);
-										
-										if ($result)
-										{
-											$msg = $email." is inserted into database.</br>";
-											session_start();
-											header("Location: login2.php");
-											die;
+  
+											if($pass == $rpass)
+											{
+												@ $db = new mysqli('localhost', 'root','','e_book_db');
+												
+												 if (mysqli_connect_error()) 
+												 {
+													 $msg= "Error: Could not connect to database.Please try again later.</br>";
+													 exit;
+												 }
+												 //$password = md5($pass);
+												 
+												 //uploading a picture 
+													
+												 $query = "insert into users values
+												(NULL,'".$fName."', '".$lName."','".$cell."','".$email."','".$pass."', '".$id."')";
+													
+												$result = $db->query($query);
+												
+												$id_image=mysqli_insert_id($db);
+												$newname="$id_image.jpg";
+												move_uploaded_file($_FILES["image"]["tmp_name"],"my_image/$newname");
+												
+												if ($result)
+												{
+													$msg = $email." is inserted into database.</br>";
+													header("Location: login2.php");
+													
+												}
+												else
+													{
+														$msg =  "An error has occurred.user was not added.</br>";
+													}
+											 
 										}
 										else
 											{
-												$msg =  "An error has occurred.user was not added.</br>";
+												$msg = "password does not match";
 											}
-										 
-									}
-									else
-										{
-											$msg = "password does not match";
 										}
+										else
+											{
+										 	 $msg .="Invalid password.";
+ 											 }
 								}
 								else
 									{
@@ -222,7 +220,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
         <div id="templatemo_content_right">
           <div class="cleaner_with_width">&nbsp;</div>
           <div class="cleaner_with_height">&nbsp;
-          <form id="form1" name="form1" method="post" action="register.php">
+          <form id="form1" name="form1" method="post" action="register.php" enctype="multipart/form-data">
       <table width="475" border="0">
         <tr>
           <td colspan="2" align="center"><h2>Register </h2></td>

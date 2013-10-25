@@ -9,13 +9,67 @@
 		{
 			$msg = "Welcome Username ".$_SESSION['email'];
 		}
-		
+	
 		if($_REQUEST['logout']== 1)
 		{
 			session_destroy();
 			header("Location: index.php");
 			die();
-			}
+		}
+?>
+ <?php
+
+
+ 
+ $msg = "";
+ $id="";
+ $table ="";
+
+@ $db = new mysqli('localhost', 'root', '','e_book_db');
+
+  if (mysqli_connect_errno()) {
+     echo "Error: Could not connect to database.  Please try again later.";
+     exit;
+  }
+  $query = "select * from users where email='".$_SESSION['email']."'";		
+	$result = $db->query($query);
+	$num_results = $result->num_rows;
+	
+	//echo "<p>Number of items found: ".$num_results."</p>";
+	$table .= "<table  border='15 '> ";
+	for ($i=0; $i <$num_results; $i++) {
+	$row = $result->fetch_assoc();
+	$id=$row["user_id"];
+	$table .= "<tr>";
+	$table .= "<th scope='row' bgcolor='#996600'>". "Name: ";
+	$table .= "<td>".htmlspecialchars(stripslashes($row['name']));
+	$table .= "</tr>";
+	$table .= "<tr>";
+	$table .= "<th scope='row' bgcolor='#996600'>"."<br />Surname: ";
+	$table .= "<td>".stripslashes(stripslashes($row['surname'])) ;
+	$table .= "</tr>";
+	$table .= "<tr>";
+	$table .= "<th scope='row' bgcolor='#996600'>"." <br />Phone Number: ";
+	$table .= "<td>".stripslashes(stripslashes($row['cell']));
+	$table .= "</tr>";
+	$table .= "<tr>";
+	$table .= "<th scope='row' bgcolor='#996600'>"."<br />Password: ";
+	$table .= "<td>".stripslashes(stripslashes($row['password']));
+	$table .= "</tr>";
+	$table .= "<tr>";
+	$table .= "<th scope='row' bgcolor='#996600'>"."<br />Email: ";
+	$table .= "<td>".stripslashes(stripslashes($row['email']));
+	$table .= "</tr>";
+	$table .= "<tr>";
+	$table .= "<th scope='row' bgcolor='#996600'>"." <br />ID Number: ";
+	$table .= "<td>".stripslashes(stripslashes($row['id_number']));
+	$table .= "</tr>";
+	
+	}
+	$table .= "</table>";
+$result->free();
+$db->close();
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -34,8 +88,8 @@
     	<ul>
             <li><a href="member.php">Profile</a></li>
             <li><a href="edit.php">Change Profile</a></li>            
-            <li><a href="newBooks.php">New Releases  </a></li>
-            <li><a href="product.php">Product  </a></li>
+            
+        <li><a href="product.php">Product  </a></li>
             <li><a href="cart.php">view Cart </a></li>
     	</ul>
     </div> <!-- end of menu -->
@@ -65,7 +119,9 @@
        	    <h1>Picture</h1>
                 <ul>
                     <li><form id="form2" name="form2" method="post" action="">
-                  </form></li>
+                      <?php echo "<img width='200' height='200' src='my_image/$id.jpg'>"; ?>
+                    
+                    </form></li>
             	</ul>
               <p>&nbsp;</p>
               <p>&nbsp;</p>
@@ -90,60 +146,7 @@
                   <?php  echo $msg ; ?>
                 </p>
                 <p>&nbsp;</p>
-                <p>
-                <?php
-
-
- 
- $msg = "";
-
-@ $db = new mysqli('localhost', 'root', '','e_book_db');
-
-  if (mysqli_connect_errno()) {
-     echo "Error: Could not connect to database.  Please try again later.";
-     exit;
-  }
-  $query = "select * from users where email='".$_SESSION['email']."'";		
-	$result = $db->query($query);
-	$num_results = $result->num_rows;
-	
-	//echo "<p>Number of items found: ".$num_results."</p>";
-	echo "<table  border='15 '> ";
-	for ($i=0; $i <$num_results; $i++) {
-	$row = $result->fetch_assoc();
-	echo "<tr>";
-	echo "<th scope='row' bgcolor='#996600'>". "Name: ";
-	echo "<td>".htmlspecialchars(stripslashes($row['name']));
-	echo "</tr>";
-	echo "<tr>";
-	echo "<th scope='row' bgcolor='#996600'>"."<br />Surname: ";
-	echo "<td>".stripslashes(stripslashes($row['surname'])) ;
-	echo "</tr>";
-	echo "<tr>";
-	echo "<th scope='row' bgcolor='#996600'>"." <br />Phone Number: ";
-	echo "<td>".stripslashes(stripslashes($row['cell']));
-	echo "</tr>";
-	echo "<tr>";
-	echo "<th scope='row' bgcolor='#996600'>"."<br />Password: ";
-	echo "<td>".stripslashes(stripslashes($row['password']));
-	echo "</tr>";
-	echo "<tr>";
-	echo "<th scope='row' bgcolor='#996600'>"."<br />Email: ";
-	echo "<td>".stripslashes(stripslashes($row['email']));
-	echo "</tr>";
-	echo "<tr>";
-	echo "<th scope='row' bgcolor='#996600'>"." <br />ID Number: ";
-	echo "<td>".stripslashes(stripslashes($row['id_number']));
-	echo "</tr>";
-	
-	
-	}
-	echo "</table>";
-$result->free();
-$db->close();
-
-?>
-                &nbsp;</p>
+                <p><?php echo $table ; ?>&nbsp;</p>
               </form></li>
             </ul>
       </div>
@@ -176,10 +179,8 @@ $db->close();
         <a href="subpage.html"><img src="images/templatemo_ads.jpg" alt="ads" width="894" height="102" /></a></div> 
     <!-- end of content -->
     
-    <div id="templatemo_footer">
-    
-	       <a href="index.php">Home</a> | <a href="about.php">About</a> | <a href="register.php">Register</a> | <a href="newBooks.php">New Releases</a> | | <a href="contact.php">Contact Us</a><br />
-        Copyright © 2013 <a href="#"><strong>SPN Company</strong></a> 	</div> 
+    <div id="templatemo_footer"><a href="member.php">Home</a> |<a href="edit.php">change profile</a>|<a href="product.php">product</a>|<a href="cart.php">view cart</a><br />
+<strong>SPN Company</strong></div> 
     <!-- end of footer -->
 <!--  Free CSS Template www.templatemo.com -->
 </div> <!-- end of container -->
